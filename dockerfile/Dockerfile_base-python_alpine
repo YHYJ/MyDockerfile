@@ -1,0 +1,32 @@
+# Version: 0.2
+#
+# SIZE: 158MB
+#
+# `apk del`会导致出现警告信息：
+#   WARNING: Ignoring APKINDEX.XXXXXX.tar.gz: No such file or directory
+# 不必在意
+
+ARG base_image_name
+ARG base_image_tag
+FROM ${base_image_name}:${base_image_tag}
+MAINTAINER yj1516268@outlook.com
+ENV TZ Asia/Shanghai
+WORKDIR /usr/mabo/
+COPY ./dockerfile/resource/script/configure_pip.sh ./dockerfile/resource/requirements_base-python.txt ./dockerfile/resource/whl/simplecannet*.whl ./dockerfile/resource/whl/pycryptodome*.tar.gz ./
+RUN printf "http://mirrors.ustc.edu.cn/alpine/v3.11/main\nhttp://mirrors.ustc.edu.cn/alpine/v3.11/community" >/etc/apk/repositories \
+    # 安装全局软件包
+    && apk add --no-cache tzdata curl bash libstdc++ libc6-compat freetds-dev \
+    # 安装虚拟软件包.build-deps
+    && apk add --no-cache --virtual .build-deps gcc musl-dev openssl-dev libffi libffi-dev make \
+    # 设置时区
+    && ln -snf /usr/share/zoneinfo/$TZ /etc/localtime \
+    && printf $TZ >/etc/timezone \
+    # 修改pip源
+    && /bin/bash ./configure_pip.sh \
+    # 安装python包
+    && pip install --no-cache-dir --upgrade -r ./requirements_base-python.txt \
+    # 2020-09-17: pycryptodome需要编译安装，不能直接安装whl文件
+    && pip install --no-cache-dir --upgrade ./pycryptodome-3.9.8.tar.gz \
+    # 删除多余文件
+    && rm -r ./*.sh ./*.txt ./*.whl ./*.tar.gz /root/.cache \
+    && apk del .build-deps

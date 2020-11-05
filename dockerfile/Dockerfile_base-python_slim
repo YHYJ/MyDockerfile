@@ -1,0 +1,33 @@
+# Version: 0.2
+#
+# SIZE: 262MB
+#
+# 由于没有安装apt-utils，出现以下提示信息：
+#   debconf: delaying package configuration, since apt-utils is not installed
+# 目前看不必在意
+
+ARG base_image_name
+ARG base_image_tag
+FROM ${base_image_name}:${base_image_tag}
+MAINTAINER yj1516268@outlook.com
+ENV TZ Asia/Shanghai
+WORKDIR /usr/mabo/
+COPY ./dockerfile/resource/script/configure_pip.sh ./dockerfile/resource/requirements_base-python.txt ./dockerfile/resource/whl/simplecannet*.whl ./dockerfile/resource/whl/pycryptodome*.tar.gz ./
+RUN sed -i "s/deb.debian.org/mirrors.tuna.tsinghua.edu.cn/g" /etc/apt/sources.list \
+    # 刷新本地缓存
+    && apt-get update \
+    && apt-get install -y curl freetds-dev build-essential libffi-dev \
+    # 设置时区
+    && ln -snf /usr/share/zoneinfo/$TZ /etc/localtime \
+    && printf $TZ >/etc/timezone \
+    # 修改pip源
+    && /bin/bash ./configure_pip.sh \
+    # 安装python包
+    && pip install --no-cache-dir --upgrade -r ./requirements_base-python.txt \
+    # 2020-09-17: pycryptodome需要编译安装，不能直接安装whl文件
+    && pip install --no-cache-dir --upgrade ./pycryptodome-3.9.8.tar.gz \
+    # 删除多余文件
+    && apt-get purge -y build-essential manpages \
+    && apt-get autoremove -y \
+    && apt-get clean -y \
+    && rm -r ./*.sh ./*.txt ./*.whl ./*.tar.gz /var/lib/apt/lists/*

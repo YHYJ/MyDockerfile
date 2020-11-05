@@ -1,0 +1,17 @@
+# Version: 0.3
+#
+# SIZE: 159MB
+
+ARG base_image_name
+ARG base_image_tag
+FROM ${base_image_name}:${base_image_tag}
+MAINTAINER yj1516268@outlook.com
+COPY ./dockerfile/resource/snap7/libsnap7*.so /usr/local/lib/snap7/
+COPY ./dockerfile/resource/script/install_libsnap7.sh ./dockerfile/resource/whl/Doctopus*.whl ./dockerfile/resource/requirements_doctopus.txt ./
+RUN pip install --no-cache-dir --upgrade -r ./requirements_doctopus.txt \
+    # 加载libsnap7
+    && /bin/bash ./install_libsnap7.sh \
+    && sed -in "s#self.library = load_library()#self.library = load_library('/usr/lib/libsnap7.so')#g" $(python -c 'import site; print(site.getsitepackages()[0])')/snap7/client.py \
+    && python -c 'import snap7; print(snap7.client.Client())' \
+    # 删除多余文件
+    && rm ./*.sh ./*.whl ./*.txt

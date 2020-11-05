@@ -1,6 +1,6 @@
-# MyDockerfile
+# README
 
-My Dockerfile
+构建redis镜像
 
 ---
 

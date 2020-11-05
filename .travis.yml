@@ -5,7 +5,6 @@ services:
 
 # 设置环境变量
 env:
-  - DOCKER_CLI_EXPERIMENTAL=enabled     # 启用Docker CLI的实验模式
   - builder=muilt-arch                  # 多架构构建器的名字
 
 # 提权

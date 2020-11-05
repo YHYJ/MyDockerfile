@@ -1,0 +1,9 @@
+# Version: 0.1
+
+ARG base_image_name
+ARG base_image_tag
+FROM ${base_image_name}:${base_image_tag}
+MAINTAINER yj1516268@outlook.com
+RUN doctopus ziyan -t ziyan
+WORKDIR /usr/mabo/ziyan
+CMD ["python","./manage.py","-t","ziyan"]

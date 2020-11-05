@@ -1,0 +1,5 @@
+scikit-build
+pillow
+opencv-python-headless==4.3.0.38
+./Doctopus-0.5.2-py2.py3-none-any.whl
+./tr-1.5.0-py3-none-any.whl

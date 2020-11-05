@@ -8,9 +8,7 @@ Created Time: 2020-09-03 13:22:46
 
 Description: 拉取并构建Redis镜像
 
-Attentions:
-- 基于Redis官方基础镜像构建：
-    1. 增加默认配置参数
+Attentions: 基于Redis官方基础镜像构建增加默认配置参数
 
 Depends:
 -

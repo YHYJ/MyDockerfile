@@ -1,5 +1,6 @@
 # 设置环境
-language: bash
+os: linux
+language: shell
 services:
   - docker
 
@@ -27,4 +28,4 @@ before_script:
   - docker buildx inspect "$builder" --bootstrap                                    # 检查当前的构建器实例并确保其已启动
   - docker buildx ls                                                                # 查看构建器详情
 script:
-  - /usr/bin/bash build_redis_image.sh    # 运行镜像构建脚本
+  - /usr/bin/env bash build_redis_image.sh    # 运行镜像构建脚本

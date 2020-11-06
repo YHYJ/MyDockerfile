@@ -12,7 +12,7 @@
 
 ---
 
-<!-- Object info -->
+[![Build Status](https://travis-ci.org/YHYJ/MyDockerfile.svg?branch=redis)](https://travis-ci.org/YHYJ/MyDockerfile)
 
 ---
 

@@ -36,12 +36,12 @@ echo -e "Running \\e[01;32m$name\\e[0m ..."
 echo -e "Machine: $machine\n"
 
 case $machine in
-x86_64 | x86 | amd64)
+x86_64 | amd64)
   # x86-64架构
   printf "[global]\nindex-url = http://mirrors.aliyun.com/pypi/simple\ntrusted-host = mirrors.aliyun.com" >"$pip_conf"
   ;;
-*)
+aarch64 | armv7l)
   # 其他架构
-  printf "[global]\nextra-index-url = https://www.piwheels.org/simple\ntrusted-host = www.piwheels.org" >"$pip_conf"
+  printf "[global]\nextra-index-url = https://www.piwheels.org/simple" >"$pip_conf"
   ;;
 esac

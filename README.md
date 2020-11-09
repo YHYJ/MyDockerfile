@@ -12,5 +12,7 @@
 
 ---
 
+[![Build Status](https://travis-ci.org/YHYJ/MyDockerfile.svg?branch=doctopus_latest)](https://travis-ci.org/YHYJ/MyDockerfile)
+
 ---
 

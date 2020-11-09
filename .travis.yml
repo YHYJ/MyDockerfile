@@ -1,11 +1,11 @@
 # 设置环境
-language: bash
+os: linux
+language: shell
 services:
   - docker
 
 # 设置环境变量
 env:
-  - DOCKER_CLI_EXPERIMENTAL=enabled     # 启用Docker CLI的实验模式
   - builder=muilt-arch                  # 多架构构建器的名字
 
 # 安装构建的依赖
@@ -16,7 +16,6 @@ install:
   - sudo apt-get update                                                                                             # 更新源
   - sudo apt-get -y -o Dpkg::Options::="--force-confnew" install docker-ce                                          # 安装Docker CE
   - sudo apt-get -y install qemu-user                                                                               # 安装QEMU多架构模拟器
-after_install:
   - docker version                                                                                                  # 检查docker版本
   - docker buildx version                                                                                           # 验证buildx是否已启用
 
@@ -29,4 +28,4 @@ before_script:
   - docker buildx inspect "$builder" --bootstrap                                    # 检查当前的构建器实例并确保其已启动
   - docker buildx ls                                                                # 查看构建器详情
 script:
-  - /usr/bin/bash build_doctopus-tr_image.sh    # 运行镜像构建脚本
+  - /usr/bin/env bash build_doctopus-tr_image.sh    # 运行镜像构建脚本

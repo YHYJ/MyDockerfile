@@ -9,10 +9,11 @@ My Dockerfile
 <!-- vim-markdown-toc GFM -->
 
 * [各分支构建状态](#各分支构建状态)
-  * [base-python](#base-python)
-  * [doctopus](#doctopus)
-  * [doctopus-tr](#doctopus-tr)
-  * [redis](#redis)
+  * [base-python_alpine](#base-python_alpine)
+  * [base-python_slim](#base-python_slim)
+  * [doctopus_latest](#doctopus_latest)
+  * [doctopus_tr](#doctopus_tr)
+  * [redis_latest](#redis_latest)
 
 <!-- vim-markdown-toc -->
 
@@ -35,18 +36,22 @@ My Dockerfile
 
 ## 各分支构建状态
 
-### base-python
+### base-python_alpine
 
-[![Build Status](https://travis-ci.org/YHYJ/MyDockerfile.svg?branch=base-python)](https://travis-ci.org/YHYJ/MyDockerfile)
+[![Build Status](https://travis-ci.org/YHYJ/MyDockerfile.svg?branch=base-python_alpine)](https://travis-ci.org/YHYJ/MyDockerfile)
 
-### doctopus
+### base-python_slim
 
-[![Build Status](https://travis-ci.org/YHYJ/MyDockerfile.svg?branch=doctopus)](https://travis-ci.org/YHYJ/MyDockerfile)
+[![Build Status](https://travis-ci.org/YHYJ/MyDockerfile.svg?branch=base-python_slim)](https://travis-ci.org/YHYJ/MyDockerfile)
 
-### doctopus-tr
+### doctopus_latest
 
-[![Build Status](https://travis-ci.org/YHYJ/MyDockerfile.svg?branch=doctopus-tr)](https://travis-ci.org/YHYJ/MyDockerfile)
+[![Build Status](https://travis-ci.org/YHYJ/MyDockerfile.svg?branch=doctopus_latest)](https://travis-ci.org/YHYJ/MyDockerfile)
 
-### redis
+### doctopus_tr
 
-[![Build Status](https://travis-ci.org/YHYJ/MyDockerfile.svg?branch=redis)](https://travis-ci.org/YHYJ/MyDockerfile)
+[![Build Status](https://travis-ci.org/YHYJ/MyDockerfile.svg?branch=doctopus_tr)](https://travis-ci.org/YHYJ/MyDockerfile)
+
+### redis_latest
+
+[![Build Status](https://travis-ci.org/YHYJ/MyDockerfile.svg?branch=redis_latest)](https://travis-ci.org/YHYJ/MyDockerfile)

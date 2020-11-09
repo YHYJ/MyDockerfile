@@ -1,6 +1,6 @@
 # README
 
-构建redis镜像
+构建redis:latest镜像
 
 ---
 
@@ -12,8 +12,7 @@
 
 ---
 
-[![Build Status](https://travis-ci.org/YHYJ/MyDockerfile.svg?branch=redis)](https://travis-ci.org/YHYJ/MyDockerfile)
+[![Build Status](https://travis-ci.org/YHYJ/MyDockerfile.svg?branch=redis_latest)](https://travis-ci.org/YHYJ/MyDockerfile)
 
 ---
-
 

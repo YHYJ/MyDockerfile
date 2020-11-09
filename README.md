@@ -12,7 +12,7 @@
 
 ---
 
-[![Build Status](https://travis-ci.org/YHYJ/MyDockerfile.svg?branch=base-python)](https://travis-ci.org/YHYJ/MyDockerfile)
+[![Build Status](https://travis-ci.org/YHYJ/MyDockerfile.svg?branch=base-python_slim)](https://travis-ci.org/YHYJ/MyDockerfile)
 
 ---
 

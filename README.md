@@ -16,10 +16,11 @@ My Dockerfile
 
 构建用分支有：
 
-- [base-python](https://github.com/YHYJ/MyDockerfile/tree/base-python)
-- [doctopus](https://github.com/YHYJ/MyDockerfile/tree/doctopus)
+- [base-python_alpine](https://github.com/YHYJ/MyDockerfile/tree/base-python_alpine)
+- [base-python_slim](https://github.com/YHYJ/MyDockerfile/tree/base-python_slim)
+- [doctopus_latest](https://github.com/YHYJ/MyDockerfile/tree/doctopus_latest)
 - [doctopus-tr](https://github.com/YHYJ/MyDockerfile/tree/doctopus-tr)
-- [redis](https://github.com/YHYJ/MyDockerfile/tree/redis)
+- [redis_latest](https://github.com/YHYJ/MyDockerfile/tree/redis_latest)
 
 分为3条构建路线：
 

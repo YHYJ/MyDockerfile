@@ -10,6 +10,7 @@ pymodbus==1.4.0
 python-etcd
 python-snap7
 pendulum
+pymssql-linux
 falcon
 msgpack-python
 waitress
@@ -24,6 +25,7 @@ constantly
 attrs
 Automat
 twisted
+gevent
 greenlet
 xmltodict
 cantools
@@ -36,3 +38,4 @@ xlrd
 firebirdsql
 hjson
 ./simplecannet-0.0.1-py3-none-any.whl
+./pycryptodome-3.9.8.tar.gz

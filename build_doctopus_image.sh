@@ -6,9 +6,9 @@ Author: YJ
 Email: yj1516268@outlook.com
 Created Time: 2020-09-01 13:43:46
 
-Description: 拉取base-python，构建doctopus镜像，最后构建ziyan/chitu镜像
+Description: 拉取base-python:alpine，构建doctopus:latest镜像，最后构建ziyan:latest/chitu:latest镜像
 
-Attentions: base-python:3.7-alpine3.11 --> doctopus:3.7-alpine3.11 -> ziyan:latest & chitu:latest
+Attentions: base-python:3.7-alpine3.11 --> doctopus:latest -> ziyan:latest & chitu:latest
 -
 
 Depends:
@@ -33,7 +33,7 @@ readonly base_image_name="$username/base-python"
 readonly base_image_tag="3.7-alpine3.11"
 # 要构建的doctopus镜像的name和tag
 readonly doctopus_name="$username/doctopus"
-readonly doctopus_tag="$base_image_tag"
+readonly doctopus_tag="latest"
 # 要构建的ziyan/chitu镜像的name和tag
 readonly ziyan_name="$username/ziyan"
 readonly ziyan_tag="latest"
@@ -47,7 +47,7 @@ echo -e "Running \\e[01;32m$name\\e[0m ...\n"
 
 # 构建alpine版doctopus镜像
 echo -e "\\e[01mBuilding\\e[0m \\e[01;34m$doctopus_name:$doctopus_tag\\e[0m ..."
-docker buildx build --file ./dockerfile/Dockerfile_doctopus_alpine \
+docker buildx build --file ./dockerfile/Dockerfile_doctopus_latest \
                     --platform linux/amd64,linux/arm64,linux/arm/v7 \
                     --tag "$doctopus_name:$doctopus_tag" \
                     --build-arg base_image_name="$base_image_name" \

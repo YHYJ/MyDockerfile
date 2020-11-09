@@ -42,7 +42,7 @@ echo -e "Running \\e[01;32m$name\\e[0m ...\n"
 # 构建alpine版base-python镜像：使用Dockerfile_base-python_alpine文件进行构建并传递基础镜像名称变量base_image_tag，构建的镜像名为base-python:$python_tag_alpine
 echo -e "\\e[01mBuilding\\e[0m \\e[01;34m$base_python_name_alpine:$base_python_tag_alpine\\e[0m ..."
 docker buildx build --file ./dockerfile/Dockerfile_base-python_alpine \
-                    --platform linux/amd64,linux/arm64,linux/arm/v7 \
+                    --platform linux/amd64,linux/arm/v7 \
                     --tag "$base_python_name_alpine:$base_python_tag_alpine" \
                     --build-arg base_image_name="$python_name_alpine" \
                     --build-arg base_image_tag="$python_tag_alpine" \

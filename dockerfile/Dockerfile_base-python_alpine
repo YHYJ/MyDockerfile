@@ -10,9 +10,9 @@ FROM ${base_image_name}:${base_image_tag}
 MAINTAINER yj1516268@outlook.com
 ENV TZ Asia/Shanghai
 WORKDIR /usr/mabo/
-COPY ./dockerfile/resource/script/configure_pip.sh ./dockerfile/resource/requirements_base-python.txt ./dockerfile/resource/whl/simplecannet*.whl ./dockerfile/resource/whl/pycryptodome*.tar.gz ./
+COPY ./dockerfile/resource/script/*.sh ./dockerfile/resource/requirements_base-python.txt ./dockerfile/resource/whl/*.whl ./
 RUN printf "http://mirrors.ustc.edu.cn/alpine/v3.11/main\nhttp://mirrors.ustc.edu.cn/alpine/v3.11/community" >/etc/apk/repositories \
-    # 安装全局软件包
+    # 安装必要的软件包
     && apk add --no-cache tzdata curl bash libstdc++ libc6-compat freetds-dev \
     # 安装虚拟软件包.build-deps
     && apk add --no-cache --virtual .build-deps gcc musl-dev openssl-dev libffi libffi-dev make \
@@ -23,6 +23,8 @@ RUN printf "http://mirrors.ustc.edu.cn/alpine/v3.11/main\nhttp://mirrors.ustc.ed
     && /bin/bash ./configure_pip.sh \
     # 安装python包
     && pip install --no-cache-dir --upgrade -r ./requirements_base-python.txt \
-    # 删除多余文件
+    # 安装编译耗时太长的python包
+    && /bin/bash ./install_whl.sh \
+    # 清理系统
     && rm -r ./*.sh ./*.txt ./*.whl ./*.tar.gz /root/.cache \
     && apk del .build-deps

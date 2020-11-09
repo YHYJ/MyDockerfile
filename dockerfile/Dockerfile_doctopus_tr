@@ -1,6 +1,4 @@
 # Version: 0.2
-#
-# SIZE: 650.38MB
 
 ARG base_image_name
 ARG base_image_tag

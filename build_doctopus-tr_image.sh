@@ -6,7 +6,7 @@ Author: YJ
 Email: yj1516268@outlook.com
 Created Time: 2020-09-04 17:42:26
 
-Description: 拉取base-python:3.7-slim镜像，构建doctopus:tr镜像，最后构建ziyan:tr和chitu:tr镜像
+Description: 拉取base-python:slim镜像，构建doctopus:tr镜像，最后构建ziyan:tr和chitu:tr镜像
 
 Attentions:
 

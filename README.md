@@ -1,6 +1,6 @@
 # README
 
-包含tr环境的ziyan的构建
+构建doctopus:tr镜像
 
 ---
 
@@ -12,9 +12,9 @@
 
 ---
 
-需要先基于base-python:3.7-slim镜像构建出doctopus:tr镜像，然后使用doctopus:tr镜像构建ziyan:tr
+需要先基于base-python:slim镜像构建出doctopus:tr镜像，然后使用doctopus:tr镜像构建ziyan:tr
 
-至于和ziyan:tr配套的chitu，目前(2020-09-03 16:28)考虑使用基于alpine的chitu即可
+至于和ziyan:tr配套的chitu，目前(2020-09-03 16:28)考虑可以使用chitu:latest
 
 **tr自带的libtr.so只支持amd64，无法编译arm架构的镜像**
 

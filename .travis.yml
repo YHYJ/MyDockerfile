@@ -8,9 +8,6 @@ env:
   - DOCKER_CLI_EXPERIMENTAL=enabled     # 启用Docker CLI的实验模式
   - builder=muilt-arch                  # 多架构构建器的名字
 
-# 提权
-sudo: required
-
 # 安装构建的依赖
 before_install:
   - curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -                                    # 添加GPG Key

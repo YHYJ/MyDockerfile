@@ -48,7 +48,7 @@ echo -e "Running \\e[01;32m$name\\e[0m ...\n"
 # 构建alpine版doctopus镜像
 echo -e "\\e[01mBuilding\\e[0m \\e[01;34m$doctopus_name:$doctopus_tag\\e[0m ..."
 docker buildx build --file ./dockerfile/Dockerfile_doctopus_latest \
-                    --platform linux/amd64,linux/arm64,linux/arm/v7 \
+                    --platform linux/amd64,linux/arm/v7 \
                     --tag "$doctopus_name:$doctopus_tag" \
                     --build-arg base_image_name="$base_image_name" \
                     --build-arg base_image_tag="$base_image_tag" \
@@ -57,7 +57,7 @@ docker buildx build --file ./dockerfile/Dockerfile_doctopus_latest \
 # 构建ziyan镜像
 echo -e "\\e[01mBuilding\\e[0m \\e[01;34m$ziyan_name:$ziyan_tag\\e[0m ..."
 docker buildx build --file ./dockerfile/Dockerfile_ziyan_latest \
-                    --platform linux/amd64,linux/arm64,linux/arm/v7 \
+                    --platform linux/amd64,linux/arm/v7 \
                     --tag "$ziyan_name:$ziyan_tag" \
                     --build-arg base_image_name="$doctopus_name" \
                     --build-arg base_image_tag="$doctopus_tag" \
@@ -66,7 +66,7 @@ docker buildx build --file ./dockerfile/Dockerfile_ziyan_latest \
 # 构建chitu镜像
 echo -e "\\e[01mBuilding\\e[0m \\e[01;34m$chitu_name:$chitu_tag\\e[0m ..."
 docker buildx build --file ./dockerfile/Dockerfile_chitu_latest \
-                    --platform linux/amd64,linux/arm64,linux/arm/v7 \
+                    --platform linux/amd64,linux/arm/v7 \
                     --tag "$chitu_name:$chitu_tag" \
                     --build-arg base_image_name="$doctopus_name" \
                     --build-arg base_image_tag="$doctopus_tag" \

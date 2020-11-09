@@ -16,3 +16,4 @@
 
 ---
 
+[glibc](https://github.com/sgerrand/alpine-pkg-glibc)只支持x86，因此暂时取消arm64支持

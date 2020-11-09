@@ -9,7 +9,9 @@ COPY ./dockerfile/resource/script/install_libsnap7.sh ./dockerfile/resource/whl/
 RUN pip install --no-cache-dir --upgrade -r ./requirements_doctopus.txt \
     # 加载libsnap7
     && /bin/bash ./install_libsnap7.sh \
-    && sed -in "s#self.library = load_library()#self.library = load_library('/usr/lib/libsnap7.so')#g" $(python -c 'import site; print(site.getsitepackages()[0])')/snap7/client.py \
+    # && sed -in "s#self.library = load_library()#self.library = load_library('/usr/lib/libsnap7.so')#g" $(python -c 'import site; print(site.getsitepackages()[0])')/snap7/client.py \
+    # 尝试更新动态链接绑定而非修改snap7的加载路径
+    && ldconfig && ldd /usr/lib/libsnap7.so \
     && python -c 'import snap7; print(snap7.client.Client())' \
     # 删除多余文件
     && rm ./*.sh ./*.whl ./*.txt

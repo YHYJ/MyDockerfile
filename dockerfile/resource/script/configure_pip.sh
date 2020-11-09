@@ -44,4 +44,9 @@ aarch64 | armv7l)
   # 其他架构
   printf "[global]\nextra-index-url = https://www.piwheels.org/simple" >"$pip_conf"
   ;;
+*)
+  # 其他架构
+  echo -e "\\e[31mUnsupported architecture: $machine\\e[0m"
+  exit 1
+  ;;
 esac

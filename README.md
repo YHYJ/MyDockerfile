@@ -1,6 +1,6 @@
 # README
 
-构建base-python镜像
+构建base-python:slim镜像
 
 ---
 

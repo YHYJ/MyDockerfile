@@ -43,14 +43,9 @@ armv7l | armv7)
   ln -s /usr/local/lib/snap7/libsnap7_arm_v7_linux.so /usr/lib/libsnap7.so
   echo -e ""
   ;;
-aarch64 | arm64)
-  # ARM 64-bit架构
-  ln -s /usr/local/lib/snap7/libsnap7_arm64_linux.so /usr/lib/libsnap7.so
-  echo -e ""
-  ;;
 *)
   # 其他架构
-  echo -e "\\e[31mNo libsnap7 meets the $machine architectural requirements\\e[0m"
+  echo -e "\\e[31mUnsupported architecture: $machine\\e[0m"
   exit 1
   ;;
 esac

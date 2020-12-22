@@ -1,4 +1,4 @@
-name: Docker image - redis_latest
+name: Docker image
 
 on:
   push:

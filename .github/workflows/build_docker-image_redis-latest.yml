@@ -1,4 +1,4 @@
-name: 'Docker image'
+name: 'Build docker image - redis_latest'
 
 on:
   push:

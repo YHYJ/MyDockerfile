@@ -1,6 +1,6 @@
 # README
 
-构建redis:latest镜像
+构建python-db:base-python-alpine镜像
 
 ---
 
@@ -12,7 +12,6 @@
 
 ---
 
-[![Build Status](https://travis-ci.org/YHYJ/MyDockerfile.svg?branch=redis_latest)](https://travis-ci.org/YHYJ/MyDockerfile)
 
 ---
 

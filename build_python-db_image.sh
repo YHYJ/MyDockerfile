@@ -1,14 +1,14 @@
 #!/usr/bin/env bash
 
 : <<!
-Name: build_redis_image.sh
+Name: build_python-db_image.sh
 Author: YJ
 Email: yj1516268@outlook.com
-Created Time: 2020-09-03 13:22:46
+Created Time: 2020-12-21 11:20:12
 
-Description: 拉取并构建Redis镜像
+Description: 构建python-db:base-python-alpine镜像
 
-Attentions: 基于Redis官方基础镜像构建增加默认配置参数
+Attentions: 基于base-python:alpine构建python-db:base-python-alpine镜像，用于操作数据库
 
 Depends:
 -
@@ -28,11 +28,11 @@ readonly name=$(basename "$0")
 # 用户名
 readonly username=$DOCKER_USERNAME
 # 基础镜像的name和tag
-readonly base_image_name="redis"
-readonly base_image_tag="6.0-alpine"
-# 要构建的redis镜像的name和tag
-readonly redis_name="$username/redis"
-readonly redis_tag="latest"
+readonly base_image_name="$username/base-python"
+readonly base_image_tag="3.7-alpine3.11"
+# 要构建的python-db镜像的name和tag
+readonly image_name="$username/python-db"
+readonly image_tag="base-python-alpine"
 
 ####################################################################
 #++++++++++++++++++++++++++++++ Main ++++++++++++++++++++++++++++++#
@@ -40,9 +40,9 @@ readonly redis_tag="latest"
 echo -e "Running $name ...\n"
 
 # 构建redis镜像
-docker buildx build --file ./dockerfile/Dockerfile \
-                    --platform linux/amd64,linux/arm64,linux/arm/v7,linux/arm/v6 \
+docker buildx build --file ./dockerfile/Dockerfile_python-db_base-python-alpine \
+                    --platform linux/amd64,linux/arm/v7 \
                     --build-arg base_image_name="$base_image_name" \
                     --build-arg base_image_tag="$base_image_tag" \
-                    --tag "$redis_name:$redis_tag" \
+                    --tag "$image_name:$image_tag" \
                     . --push

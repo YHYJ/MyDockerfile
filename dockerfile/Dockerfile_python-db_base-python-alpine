@@ -1,0 +1,16 @@
+# Version: 0.1
+
+ARG base_image_name
+ARG base_image_tag
+FROM ${base_image_name}:${base_image_tag}
+MAINTAINER yj1516268@outlook.com
+ENV TZ Asia/Shanghai
+WORKDIR /usr/mabo/
+COPY ./dockerfile/resource/requirements_python-db.txt ./
+RUN apk add --no-cache postgresql-libs \
+    && apk add --no-cache --virtual .build-deps gcc musl-dev postgresql-dev \
+    && pip install --no-cache-dir --upgrade -r ./requirements_python-db.txt \
+    # 删除虚拟软件包.build-deps
+    && apk del .build-deps \
+    # 删除多余文件
+    && rm ./*.txt

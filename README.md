@@ -12,7 +12,7 @@
 
 ---
 
-<!-- [![Build Status](https://travis-ci.org/YHYJ/MyDockerfile.svg?branch=redis_latest)](https://travis-ci.org/YHYJ/MyDockerfile) -->
+[![Build Status](https://travis-ci.org/YHYJ/MyDockerfile.svg?branch=redis_latest)](https://travis-ci.org/YHYJ/MyDockerfile)
 
 ---
 

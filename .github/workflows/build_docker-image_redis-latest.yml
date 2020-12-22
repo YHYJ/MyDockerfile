@@ -2,8 +2,7 @@ name: Docker image
 
 on:
   push:
-    branches:
-      - redis_latest
+    branches: [ redis_latest ]
 
 jobs:
   multi-arch:

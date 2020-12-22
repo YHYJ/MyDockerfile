@@ -1,16 +1,9 @@
-env:
-  DOCKERFILE: Dockerfile_redis_latest
-  BASE_IMAGE_NAME: redis
-  BASE_IMAGE_TAG: 6.0-alpine
-  IMAGE_NAME: redis
-  IMAGE_TAG: latest
-  PUSH: true
-
 name: Docker image - redis_latest
 
 on:
   push:
-    branches: redis_latest
+    branches:
+      - redis_latest
 
 jobs:
   multi-arch:
@@ -35,11 +28,17 @@ jobs:
         name: Build and push image
         id: docker_build
         uses: docker/build-push-action@v2
+        env:
+          DOCKERFILE: Dockerfile_redis_latest
+          BASE_IMAGE_NAME: redis
+          BASE_IMAGE_TAG: 6.0-alpine
+          IMAGE_NAME: redis
+          IMAGE_TAG: latest
         with:
           context: .
           file: ./dockerfile/$DOCKERFILE
           platforms: linux/amd64,linux/arm64,linux/arm/v7,linux/arm/v6
-          push: $PUSH
+          push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/$IMAGE_NAME:$IMAGE_TAG
           build-args: |
             base_image_name=$BASE_IMAGE_NAME

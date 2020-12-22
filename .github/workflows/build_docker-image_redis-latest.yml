@@ -6,7 +6,7 @@ env:
   IMAGE_TAG: latest
   PUSH: true
 
-name: Docker image CI - redis:latest
+name: Docker image - redis_latest
 
 on:
   push:

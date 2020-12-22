@@ -12,7 +12,7 @@
 
 ---
 
-[![Build Status](https://travis-ci.org/YHYJ/MyDockerfile.svg?branch=base-python_alpine)](https://travis-ci.org/YHYJ/MyDockerfile)
+![Build docker image - base-python_alpine](https://github.com/YHYJ/MyDockerfile/workflows/Build%20docker%20image%20-%20base-python_alpine/badge.svg?branch=base-python_alpine)
 
 ---
 

@@ -1,5 +1,4 @@
 env:
-  BRANCHE: redis_latest
   DOCKERFILE: Dockerfile_redis_latest
   BASE_IMAGE_NAME: redis
   BASE_IMAGE_TAG: 6.0-alpine
@@ -11,7 +10,7 @@ name: Docker image CI - redis:latest
 
 on:
   push:
-    branches: $BRANCHE
+    branches: redis_latest
 
 jobs:
   multi-arch:

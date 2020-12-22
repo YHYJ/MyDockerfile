@@ -23,8 +23,8 @@ RUN printf "http://mirrors.ustc.edu.cn/alpine/v3.11/main\nhttp://mirrors.ustc.ed
     && /bin/bash ./configure_pip.sh \
     # 安装python包
     && pip install --no-cache-dir --upgrade -r ./requirements_base-python.txt \
-    && pip install --no-cache-dir --upgrade --no-index ./simplecannet-0.0.1-py3-none-any.whl --find-links . \
-    && pip install --no-cache-dir --upgrade --no-index ./pycryptodome-3.9.8.tar.gz --find-links . \
+    && pip install --no-cache-dir ./simplecannet-0.0.1-py3-none-any.whl \
+    && pip install --no-cache-dir ./pycryptodome-3.9.8.tar.gz \
     # 清理系统
     && rm -r ./*.sh ./*.txt ./*.whl ./*.tar.gz /root/.cache \
     && apk del .build-deps

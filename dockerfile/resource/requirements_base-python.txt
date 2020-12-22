@@ -37,5 +37,3 @@ xlsxwriter
 xlrd
 firebirdsql
 hjson
-./simplecannet-0.0.1-py3-none-any.whl
-./pycryptodome-3.9.8.tar.gz

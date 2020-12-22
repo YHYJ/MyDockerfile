@@ -28,21 +28,15 @@ jobs:
         name: Build and push image
         id: docker_build
         uses: docker/build-push-action@v2
-        env:
-          DOCKERFILE: Dockerfile_redis_latest
-          BASE_IMAGE_NAME: redis
-          BASE_IMAGE_TAG: 6.0-alpine
-          IMAGE_NAME: redis
-          IMAGE_TAG: latest
         with:
           context: .
-          file: ./dockerfile/$DOCKERFILE
+          file: ./dockerfile/Dockerfile_redis_latest
           platforms: linux/amd64,linux/arm64,linux/arm/v7,linux/arm/v6
-          push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/$IMAGE_NAME:$IMAGE_TAG
           build-args: |
-            base_image_name=$BASE_IMAGE_NAME
-            base_image_tag=$BASE_IMAGE_TAG
+            base_image_name=redis
+            base_image_tag=6.0-alpine
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/redis:latest
+          push: true
       -
         name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}

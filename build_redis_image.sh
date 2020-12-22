@@ -40,7 +40,7 @@ readonly redis_tag="latest"
 echo -e "Running $name ...\n"
 
 # 构建redis镜像
-docker buildx build --file ./dockerfile/Dockerfile \
+docker buildx build --file ./dockerfile/Dockerfile_redis_latest \
                     --platform linux/amd64,linux/arm64,linux/arm/v7,linux/arm/v6 \
                     --build-arg base_image_name="$base_image_name" \
                     --build-arg base_image_tag="$base_image_tag" \

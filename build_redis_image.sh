@@ -31,8 +31,8 @@ readonly username=$DOCKER_USERNAME
 readonly base_image_name="redis"
 readonly base_image_tag="6.0-alpine"
 # 要构建的redis镜像的name和tag
-readonly redis_name="redis"
-readonly redis_tag="latest"
+readonly image_name="redis"
+readonly image_tag="latest"
 
 ####################################################################
 #++++++++++++++++++++++++++++++ Main ++++++++++++++++++++++++++++++#
@@ -44,5 +44,5 @@ docker buildx build --file ./dockerfile/Dockerfile_redis_latest \
                     --platform linux/amd64,linux/arm64,linux/arm/v7,linux/arm/v6 \
                     --build-arg base_image_name="$base_image_name" \
                     --build-arg base_image_tag="$base_image_tag" \
-                    --tag "$username/$redis_name:$redis_tag" \
+                    --tag "$username/$image_name:$image_tag" \
                     . --push

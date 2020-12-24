@@ -36,11 +36,7 @@ echo -e "Machine: $machine\n"
 case $machine in
 x86_64 | x86 | amd64)
   # x86-64架构
-  dpkg -i ./libjasper1_1.900.1-debian1-2.4+deb8u6_amd64.deb
-  ;;
-armv7l | armv7)
-  # ARM 32-bit架构
-  dpkg -i ./libjasper1_1.900.1-debian1-2.4+deb8u6_armhf.deb
+  dpkg -i libjasper1_1.900.1-debian1-2.4+deb8u6_amd64.deb
   ;;
 *)
   # 其他架构

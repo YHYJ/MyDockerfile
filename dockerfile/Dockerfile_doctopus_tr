@@ -4,7 +4,7 @@ ARG base_image_name
 ARG base_image_tag
 FROM ${base_image_name}:${base_image_tag}
 MAINTAINER yj1516268@outlook.com
-COPY ./dockerfile/resource/script/install_libjasper1.sh ./dockerfile/resource/deb/libjasper1*.deb ./dockerfile/resource/requirements_doctopus-tr.txt ./
+COPY ./dockerfile/resource/script/install_libjasper1.sh ./dockerfile/resource/requirements_doctopus-tr.txt ./
 RUN apt-get update \
     # 安装opencv-python的依赖
     && apt-get install -y cmake git patch libgl1-mesa-glx libglib2.0-0 libatlas-base-dev libsm6 libxrender1 libjpeg62 libopenjp2-7 libtiff5 libpng16-16 multiarch-support libilmbase23 libopenexr23 libavcodec58 libwebp6 libavformat58 libavutil56 libpangocairo-1.0-0 libpango-1.0-0 libatk1.0-0 libcairo-gobject2 libcairo2 libgdk-pixbuf2.0-0 libgtk-3-0 libswscale5 libgstreamer1.0-0 \

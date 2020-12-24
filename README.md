@@ -12,7 +12,7 @@
 
 ---
 
-![Build docker image - python-db_base-python-alpine](https://github.com/YHYJ/MyDockerfile/workflows/Build%20docker%20image%20-%20python-db_base-python-alpine/badge.svg?branch=redis_latest)
+![Build docker image - redis:latest](https://github.com/YHYJ/MyDockerfile/workflows/Build%20docker%20image%20-%20redis:latest/badge.svg?branch=redis_latest)
 
 ---
 

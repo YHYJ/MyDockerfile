@@ -10,7 +10,7 @@ FROM ${base_image_name}:${base_image_tag}
 MAINTAINER yj1516268@outlook.com
 ENV TZ Asia/Shanghai
 WORKDIR /usr/mabo/
-COPY ./dockerfile/resource/requirements_base-python.txt ./
+COPY ./dockerfile/resource/script/*.sh ./dockerfile/resource/requirements_base-python.txt ./
 RUN sed -i "s/deb.debian.org/mirrors.tuna.tsinghua.edu.cn/g" /etc/apt/sources.list \
     # 安装必要的软件包
     && apt-get update \

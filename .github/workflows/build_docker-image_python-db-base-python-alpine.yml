@@ -5,7 +5,7 @@ on:
     branches: [ python-db_base-python-alpine ]
 
 jobs:
-  multi-arch:
+  build-python-db_base-python-alpine:
     runs-on: ubuntu-latest
     steps:
       -

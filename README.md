@@ -12,7 +12,7 @@
 
 ---
 
-![Build docker image - base-python_alpine](https://github.com/YHYJ/MyDockerfile/workflows/Build%20docker%20image%20-%20base-python_alpine/badge.svg?branch=base-python_alpine)
+![Build docker image - base-python:3.7-alpine3.11](https://github.com/YHYJ/MyDockerfile/workflows/Build%20docker%20image%20-%20base-python:3.7-alpine3.11/badge.svg?branch=base-python_alpine)
 
 ---
 

@@ -32,7 +32,7 @@ jobs:
           file: ./dockerfile/Dockerfile_doctopus_latest
           platforms: linux/amd64,linux/arm/v7
           build-args: |
-            base_image_name=base-python
+            base_image_name=${{ secrets.DOCKERHUB_USERNAME }}/base-python
             base_image_tag=3.7-alpine3.11
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/doctopus:latest
           push: true
@@ -67,7 +67,7 @@ jobs:
           file: ./dockerfile/Dockerfile_ziyan_latest
           platforms: linux/amd64,linux/arm/v7
           build-args: |
-            base_image_name=doctopus
+            base_image_name=${{ secrets.DOCKERHUB_USERNAME }}/doctopus
             base_image_tag=latest
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/ziyan:latest
           push: true
@@ -102,7 +102,7 @@ jobs:
           file: ./dockerfile/Dockerfile_chitu_latest
           platforms: linux/amd64,linux/arm/v7
           build-args: |
-            base_image_name=doctopus
+            base_image_name=${{ secrets.DOCKERHUB_USERNAME }}/doctopus
             base_image_tag=latest
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/chitu:latest
           push: true

@@ -1,4 +1,4 @@
-name: 'Build docker image - python-db_base-python-alpine'
+name: 'Build docker image - python-db:base-python-alpine'
 
 on:
   push:

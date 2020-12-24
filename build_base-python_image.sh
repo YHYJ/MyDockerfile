@@ -28,22 +28,22 @@ readonly name=$(basename "$0")
 # 用户名
 readonly username=$DOCKER_USERNAME
 # 要拉取的官方python镜像的tag
-readonly python_name_slim="python"
-readonly python_tag_slim="3.7-slim"
+readonly base_image_name="python"
+readonly base_image_tag="3.7-slim"
 # 要构建的base-python镜像的name和tag
-readonly base_python_name_slim="$username/base-python"
-readonly base_python_tag_slim="$python_tag_slim"
+readonly image_name="$username/base-python"
+readonly image_tag="$base_image_tag"
 
 ####################################################################
 #++++++++++++++++++++++++++++++ Main ++++++++++++++++++++++++++++++#
 ####################################################################
 echo -e "Running \\e[01;32m$name\\e[0m ...\n"
 
-# 构建slim版base-python镜像：使用Dockerfile_base-python_slim文件进行构建并传递基础镜像名称变量base_image_tag，构建的镜像名为base-python:$python_tag_slim
-echo -e "\\e[01mBuilding\\e[0m \\e[01;34m$base_python_name_slim:$base_python_tag_slim\\e[0m ..."
+# 构建slim版base-python镜像：使用Dockerfile_base-python_slim文件进行构建并传递基础镜像名称变量base_image_tag，构建的镜像名为base-python:$base_image_tag
+echo -e "\\e[01mBuilding\\e[0m \\e[01;34m$image_name:$image_tag\\e[0m ..."
 docker buildx build --file ./dockerfile/Dockerfile_base-python_slim \
                     --platform linux/amd64,linux/arm/v7 \
-                    --tag "$base_python_name_slim:$base_python_tag_slim" \
-                    --build-arg base_image_name="$python_name_slim" \
-                    --build-arg base_image_tag="$python_tag_slim" \
+                    --tag "$image_name:$image_tag" \
+                    --build-arg base_image_name="$base_image_name" \
+                    --build-arg base_image_tag="$base_image_tag" \
                     . --push

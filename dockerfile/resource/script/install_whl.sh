@@ -37,7 +37,7 @@ readonly gevent_armv7l="https://www.piwheels.org/simple/gevent/gevent-20.9.0-cp3
 # --- pymssql-linux
 readonly pymssql_linux_x86="https://files.pythonhosted.org/packages/ff/a1/2ed1ee1fc87adb3fd3bd2fc221edf5702bde8d7a21ea39addadcf16bde6e/pymssql_linux-2.1.6-cp37-cp37m-manylinux2010_x86_64.whl"
 # readonly pymssql_linux_aarch64="TODO"
-readonly pymssql_linux_armv7l="./pymssql_linux-2.1.6-cp37-cp37m-linux_armv7l.whl"     # 编译于NanoPi
+readonly pymssql_linux_armv7l="pymssql_linux"
 
 ####################################################################
 #++++++++++++++++++++++++++++++ Main ++++++++++++++++++++++++++++++#

@@ -13,7 +13,7 @@ WORKDIR /usr/mabo/
 COPY ./dockerfile/resource/script/*.sh ./dockerfile/resource/requirements_base-python.txt ./
 RUN printf "http://mirrors.ustc.edu.cn/alpine/v3.11/main\nhttp://mirrors.ustc.edu.cn/alpine/v3.11/community" >/etc/apk/repositories \
     # 安装必要的软件包
-    && apk add --no-cache tzdata curl bash libstdc++ libc6-compat freetds-dev \
+    && apk add --no-cache tzdata curl bash libstdc++ libc6-compat freetds-dev git \
     # 安装虚拟软件包.build-deps
     && apk add --no-cache --virtual .build-deps gcc musl-dev openssl-dev libffi libffi-dev make \
     # 设置时区

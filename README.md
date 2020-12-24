@@ -12,7 +12,7 @@
 
 ---
 
-[![Build Status](https://travis-ci.org/YHYJ/MyDockerfile.svg?branch=base-python_slim)](https://travis-ci.org/YHYJ/MyDockerfile)
+![Build docker image - base-python:3.7-slim](https://github.com/YHYJ/MyDockerfile/workflows/Build%20docker%20image%20-%20base-python:3.7-slim/badge.svg?branch=base-python_slim)
 
 ---
 

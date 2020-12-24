@@ -1,4 +1,4 @@
-name: 'Build docker image - base-python_alpine'
+name: 'Build docker image - base-python:3.7-alpine3.11'
 
 on:
   push:

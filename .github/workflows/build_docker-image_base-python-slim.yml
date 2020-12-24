@@ -5,7 +5,7 @@ on:
     branches: [ base-python_slim ]
 
 jobs:
-  multi-arch:
+  build-base-python_slim:
     runs-on: ubuntu-latest
     steps:
       -

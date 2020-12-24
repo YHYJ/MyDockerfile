@@ -5,7 +5,7 @@ on:
     branches: [ base-python_alpine ]
 
 jobs:
-  multi-arch:
+  build-base-python_alpine:
     runs-on: ubuntu-latest
     steps:
       -

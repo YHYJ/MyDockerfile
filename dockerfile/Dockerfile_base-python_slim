@@ -21,7 +21,9 @@ RUN sed -i "s/deb.debian.org/mirrors.tuna.tsinghua.edu.cn/g" /etc/apt/sources.li
     # 修改pip源
     && /bin/bash ./configure_pip.sh \
     # 安装python包
+    && pip install --no-cache-dir --upgrade pip \
     && pip install --no-cache-dir --upgrade -r ./requirements_base-python.txt \
+    && pip install git+https://github.com/YHYJ/simplecannet \
     # 安装编译耗时太长的python包
     && /bin/bash ./install_whl.sh \
     # 清理系统

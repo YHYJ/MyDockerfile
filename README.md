@@ -8,11 +8,19 @@ My Dockerfile
 
 <!-- vim-markdown-toc GFM -->
 
-* [各分支构建状态](#各分支构建状态)
+* [分支列表](#分支列表)
+* [构建路线](#构建路线)
+* [各镜像构建状态](#各镜像构建状态)
 
 <!-- vim-markdown-toc -->
 
 ---
+
+## 分支列表
+
+描述性分支有：
+
+- [main](https://github.com/YHYJ/MyDockerfile/tree/main)
 
 构建用分支有：
 
@@ -20,26 +28,34 @@ My Dockerfile
 - [base-python_slim](https://github.com/YHYJ/MyDockerfile/tree/base-python_slim)
 - [doctopus_latest](https://github.com/YHYJ/MyDockerfile/tree/doctopus_latest)
 - [doctopus-tr](https://github.com/YHYJ/MyDockerfile/tree/doctopus-tr)
+- [python-db_base-python-alpine](https://github.com/YHYJ/MyDockerfile/tree/python-db_base-python-alpine)
 - [redis_latest](https://github.com/YHYJ/MyDockerfile/tree/redis_latest)
 
-分为3条构建路线：
+## 构建路线
+
+分为4条构建路线：
 
 - libary/python:alpine --> base-python:alpine --> doctopus:latest
+- libary/python:alpine --> python-db:base-python-alpine
 - libary/python:slim --> base-python:slim --> doctopus:tr
 - libary/redis:6.0-alpine --> redis:latest
 
 ---
 
-## 各分支构建状态
+## 各镜像构建状态
 
-| base-python_alpine                                                                                                                | doctopus_latest                                                                                                                |
-| ---                                                                                                                               | ---                                                                                                                            |
-| [![Build Status](https://travis-ci.org/YHYJ/MyDockerfile.svg?branch=base-python_alpine)](https://travis-ci.org/YHYJ/MyDockerfile) | [![Build Status](https://travis-ci.org/YHYJ/MyDockerfile.svg?branch=doctopus_latest)](https://travis-ci.org/YHYJ/MyDockerfile) |
+| base-python:3.7-alpine3.11                                                                                                                                                                     | base-python:3.7-slim                                                                                                                                                             |
+| ---                                                                                                                                                                                            | ---                                                                                                                                                                              |
+| ![Build docker image - base-python:3.7-alpine3.11](https://github.com/YHYJ/MyDockerfile/workflows/Build%20docker%20image%20-%20base-python:3.7-alpine3.11/badge.svg?branch=base-python_alpine) | ![Build docker image - base-python:3.7-slim](https://github.com/YHYJ/MyDockerfile/workflows/Build%20docker%20image%20-%20base-python:3.7-slim/badge.svg?branch=base-python_slim) |
 
-| base-python_slim                                                                                                                | doctopus_tr                                                                                                                |
-| ---                                                                                                                             | ---                                                                                                                        |
-| [![Build Status](https://travis-ci.org/YHYJ/MyDockerfile.svg?branch=base-python_slim)](https://travis-ci.org/YHYJ/MyDockerfile) | [![Build Status](https://travis-ci.org/YHYJ/MyDockerfile.svg?branch=doctopus_tr)](https://travis-ci.org/YHYJ/MyDockerfile) |
+| doctopus:latest                                                                                                                                                       | doctopus:tr                                                                                                                                               |
+| ---                                                                                                                                                                   | ---                                                                                                                                                       |
+| ![Build docker image - doctopus:latest](https://github.com/YHYJ/MyDockerfile/workflows/Build%20docker%20image%20-%20doctopus:latest/badge.svg?branch=doctopus_latest) | ![Build docker image - doctopus:tr](https://github.com/YHYJ/MyDockerfile/workflows/Build%20docker%20image%20-%20doctopus:tr/badge.svg?branch=doctopus_tr) |
 
-|redis_latest                                                                                                                |
-|---                                                                                                                         |
-|[![Build Status](https://travis-ci.org/YHYJ/MyDockerfile.svg?branch=redis_latest)](https://travis-ci.org/YHYJ/MyDockerfile) |
+| python-db:base-python-alpine                                                                                                                                                                                 |
+| ---                                                                                                                                                                                                          |
+| ![Build docker image - python-db:base-python-alpine](https://github.com/YHYJ/MyDockerfile/workflows/Build%20docker%20image%20-%20python-db:base-python-alpine/badge.svg?branch=python-db_base-python-alpine) |
+
+| redis:latest                                                                                                                                                 |
+| ---                                                                                                                                                          |
+| ![Build docker image - redis:latest](https://github.com/YHYJ/MyDockerfile/workflows/Build%20docker%20image%20-%20redis:latest/badge.svg?branch=redis_latest) |

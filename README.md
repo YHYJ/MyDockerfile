@@ -12,7 +12,7 @@
 
 ---
 
-[![Build Status](https://travis-ci.org/YHYJ/MyDockerfile.svg?branch=doctopus_latest)](https://travis-ci.org/YHYJ/MyDockerfile)
+![Build docker image - doctopus:latest](https://github.com/YHYJ/MyDockerfile/workflows/Build%20docker%20image%20-%20doctopus:latest/badge.svg?branch=doctopus_latest)
 
 ---
 

@@ -23,9 +23,9 @@ RUN sed -i "s/deb.debian.org/mirrors.tuna.tsinghua.edu.cn/g" /etc/apt/sources.li
     # 安装python包
     && pip install --no-cache-dir --upgrade pip \
     && pip install --no-cache-dir --upgrade -r ./requirements_base-python.txt \
-    && pip install git+https://github.com/YHYJ/simplecannet \
+    && pip install --no-cache-dir --upgrade git+https://github.com/YHYJ/simplecannet \
     # 清理系统
-    && apt-get purge -y manpages build-essential git \
+    && apt-get purge -y manpages build-essential \
     && apt-get autoremove -y \
     && apt-get clean -y \
     && rm -r ./*.txt /var/lib/apt/lists/*

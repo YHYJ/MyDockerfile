@@ -10,7 +10,7 @@ FROM ${base_image_name}:${base_image_tag}
 MAINTAINER yj1516268@outlook.com
 ENV TZ Asia/Shanghai
 WORKDIR /usr/mabo/
-COPY ./dockerfile/resource/script/*.sh ./dockerfile/resource/requirements_base-python.txt ./dockerfile/resource/whl/*.whl ./dockerfile/resource/whl/pycryptodome*.tar.gz ./
+COPY ./dockerfile/resource/script/*.sh ./dockerfile/resource/requirements_base-python.txt ./dockerfile/resource/whl/*.whl ./
 RUN printf "http://mirrors.ustc.edu.cn/alpine/v3.11/main\nhttp://mirrors.ustc.edu.cn/alpine/v3.11/community" >/etc/apk/repositories \
     # 安装必要的软件包
     && apk add --no-cache tzdata curl bash libstdc++ libc6-compat freetds-dev \
@@ -25,5 +25,5 @@ RUN printf "http://mirrors.ustc.edu.cn/alpine/v3.11/main\nhttp://mirrors.ustc.ed
     && pip install --no-cache-dir --upgrade pip \
     && pip install --no-cache-dir --upgrade -r ./requirements_base-python.txt \
     # 清理系统
-    && rm -r ./*.sh ./*.txt ./*.whl ./*.tar.gz /root/.cache \
+    && rm -r ./*.sh ./*.txt ./*.whl /root/.cache \
     && apk del .build-deps

@@ -30,7 +30,7 @@ jobs:
         with:
           context: .
           file: ./dockerfile/Dockerfile_doctopus_tr
-          platforms: linux/amd64,linux/arm/v7
+          platforms: linux/amd64
           build-args: |
             base_image_name=${{ secrets.DOCKERHUB_USERNAME }}/base-python
             base_image_tag=3.7-slim
@@ -65,7 +65,7 @@ jobs:
         with:
           context: .
           file: ./dockerfile/Dockerfile_ziyan_tr
-          platforms: linux/amd64,linux/arm/v7
+          platforms: linux/amd64
           build-args: |
             base_image_name=${{ secrets.DOCKERHUB_USERNAME }}/doctopus
             base_image_tag=tr
@@ -100,7 +100,7 @@ jobs:
         with:
           context: .
           file: ./dockerfile/Dockerfile_chitu_tr
-          platforms: linux/amd64,linux/arm/v7
+          platforms: linux/amd64
           build-args: |
             base_image_name=${{ secrets.DOCKERHUB_USERNAME }}/doctopus
             base_image_tag=tr

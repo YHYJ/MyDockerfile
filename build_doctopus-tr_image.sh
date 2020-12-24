@@ -33,9 +33,10 @@ readonly base_image_tag="3.7-slim"
 # 要构建的镜像doctopus:tr的name和tag
 readonly doctopus_name="$username/doctopus"
 readonly doctopus_tag="tr"
-# 要构建的ziyan/chitu镜像的name和tag
+# 要构建的ziyan镜像的name和tag
 readonly ziyan_name="$username/ziyan"
 readonly ziyan_tag="tr"
+# 要构建的chitu镜像的name和tag
 readonly chitu_name="$username/chitu"
 readonly chitu_tag="tr"
 

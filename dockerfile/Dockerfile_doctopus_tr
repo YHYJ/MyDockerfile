@@ -4,16 +4,18 @@ ARG base_image_name
 ARG base_image_tag
 FROM ${base_image_name}:${base_image_tag}
 MAINTAINER yj1516268@outlook.com
-COPY ./dockerfile/resource/script/install_libjasper1.sh ./dockerfile/resource/deb/libjasper1*.deb ./dockerfile/resource/whl/*.whl ./dockerfile/resource/requirements_doctopus-tr.txt ./
+COPY ./dockerfile/resource/script/install_libjasper1.sh ./dockerfile/resource/deb/libjasper1*.deb ./dockerfile/resource/requirements_doctopus-tr.txt ./
 RUN apt-get update \
     # 安装opencv-python的依赖
     && apt-get install -y cmake git patch libgl1-mesa-glx libglib2.0-0 libatlas-base-dev libsm6 libxrender1 libjpeg62 libopenjp2-7 libtiff5 libpng16-16 multiarch-support libilmbase23 libopenexr23 libavcodec58 libwebp6 libavformat58 libavutil56 libpangocairo-1.0-0 libpango-1.0-0 libatk1.0-0 libcairo-gobject2 libcairo2 libgdk-pixbuf2.0-0 libgtk-3-0 libswscale5 libgstreamer1.0-0 \
     && /bin/bash ./install_libjasper1.sh \
     # 安装python包
     && pip install --no-cache-dir --upgrade -r ./requirements_doctopus-tr.txt \
+    && pip install --no-cache-dir --upgrade git+https://github.com/YHYJ/Doctopus-casual \
+    && pip install --no-cache-dir --upgrade git+https://github.com/myhub/tr.git@1.5.1 \
     # && pip install git+https://github.com/myhub/tr.git@1.1.3 \
     # 验证tr是否成功安装
     && python -c 'import tr' \
     # 删除多余文件
-    && apt-get purge -y cmake manpages libgpm2 manpages \
-    && rm ./*.sh ./*.txt ./*.whl ./*.deb
+    && apt-get purge -y cmake manpages libgpm2 \
+    && rm ./*.sh ./*.txt ./*.deb

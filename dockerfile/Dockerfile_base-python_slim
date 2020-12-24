@@ -10,7 +10,7 @@ FROM ${base_image_name}:${base_image_tag}
 MAINTAINER yj1516268@outlook.com
 ENV TZ Asia/Shanghai
 WORKDIR /usr/mabo/
-COPY ./dockerfile/resource/script/*.sh ./dockerfile/resource/requirements_base-python.txt ./dockerfile/resource/whl/*.whl ./
+COPY ./dockerfile/resource/requirements_base-python.txt ./
 RUN sed -i "s/deb.debian.org/mirrors.tuna.tsinghua.edu.cn/g" /etc/apt/sources.list \
     # 安装必要的软件包
     && apt-get update \
@@ -24,10 +24,8 @@ RUN sed -i "s/deb.debian.org/mirrors.tuna.tsinghua.edu.cn/g" /etc/apt/sources.li
     && pip install --no-cache-dir --upgrade pip \
     && pip install --no-cache-dir --upgrade -r ./requirements_base-python.txt \
     && pip install git+https://github.com/YHYJ/simplecannet \
-    # 安装编译耗时太长的python包
-    && /bin/bash ./install_whl.sh \
     # 清理系统
     && apt-get purge -y manpages build-essential git \
     && apt-get autoremove -y \
     && apt-get clean -y \
-    && rm -r ./*.sh ./*.txt ./*.whl /var/lib/apt/lists/*
+    && rm -r ./*.txt /var/lib/apt/lists/*

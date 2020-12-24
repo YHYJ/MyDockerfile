@@ -12,7 +12,7 @@
 
 ---
 
-[![Build Status](https://travis-ci.org/YHYJ/MyDockerfile.svg?branch=doctopus_tr)](https://travis-ci.org/YHYJ/MyDockerfile)
+![Build docker image - doctopus:tr](https://github.com/YHYJ/MyDockerfile/workflows/Build%20docker%20image%20-%20doctopus:tr/badge.svg?branch=doctopus_tr)
 
 ---
 
@@ -25,3 +25,4 @@
 [安装opencv-python依赖（如果当前还是不管用的话再说）](https://blog.piwheels.org/new-opencv-builds)
 
 [libjasper1 deb下载地址](http://security-cdn.debian.org/debian-security/pool/updates/main/j/jasper)
+

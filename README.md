@@ -1,6 +1,9 @@
 # MyDockerfile
 
-My Dockerfile
+<!-- File: README.md -->
+<!-- Auther: YJ -->
+<!-- Email: yj1516268@outlook.com -->
+<!-- Created Time: 2021-04-22 08:45:08 -->
 
 ---
 
@@ -13,6 +16,12 @@ My Dockerfile
 * [各镜像构建状态](#各镜像构建状态)
 
 <!-- vim-markdown-toc -->
+
+---
+
+我的Dockerfile文件
+
+镜像构建过程由Github Actions自动执行
 
 ---
 

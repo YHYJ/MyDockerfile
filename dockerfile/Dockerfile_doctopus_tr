@@ -3,7 +3,6 @@
 ARG base_image_name
 ARG base_image_tag
 FROM ${base_image_name}:${base_image_tag}
-MAINTAINER yj1516268@outlook.com
 COPY ./dockerfile/resource/script/install_libjasper1.sh ./dockerfile/resource/requirements_doctopus-tr.txt ./
 RUN apt-get update \
     # 安装opencv-python的依赖

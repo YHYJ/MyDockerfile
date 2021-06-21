@@ -14,8 +14,7 @@ RUN printf "http://mirrors.ustc.edu.cn/alpine/v3.11/main\nhttp://mirrors.ustc.ed
     # 安装必要的软件包
     && apk add --no-cache tzdata curl bash libstdc++ libc6-compat freetds-dev git \
     # 安装虚拟软件包.build-deps
-    # && apk add --no-cache --virtual .build-deps gcc g++ musl-dev openssl-dev libffi libffi-dev make \
-    && apk add --no-cache gcc g++ musl-dev openssl-dev libffi libffi-dev make \
+    && apk add --no-cache --virtual .build-deps gcc g++ musl-dev openssl-dev libffi libffi-dev make \
     # 设置时区
     && ln -snf /usr/share/zoneinfo/$TZ /etc/localtime \
     && printf $TZ >/etc/timezone \
@@ -24,7 +23,8 @@ RUN printf "http://mirrors.ustc.edu.cn/alpine/v3.11/main\nhttp://mirrors.ustc.ed
     # 安装python包
     && pip install --no-cache-dir --upgrade pip \
     && pip install --no-cache-dir --upgrade -r ./requirements_base-python.txt \
+    && pip install --no-cache-dir --upgrade pycryptodome==3.9.8 -i https://pypi.org/simple \
     && pip install --no-cache-dir --upgrade git+https://github.com/YHYJ/simplecannet \
     # 清理系统
-    # && apk del .build-deps \
+    && apk del .build-deps \
     && rm -r ./*.sh ./*.txt /root/.cache

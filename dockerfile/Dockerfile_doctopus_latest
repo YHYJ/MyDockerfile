@@ -3,7 +3,6 @@
 ARG base_image_name
 ARG base_image_tag
 FROM ${base_image_name}:${base_image_tag}
-MAINTAINER yj1516268@outlook.com
 COPY ./dockerfile/resource/snap7/libsnap7*.so /usr/local/lib/snap7/
 COPY ./dockerfile/resource/script/install_libsnap7.sh ./
 RUN pip install --no-cache-dir --upgrade git+https://github.com/YHYJ/Doctopus-casual \

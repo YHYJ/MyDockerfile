@@ -11,3 +11,6 @@ python-etcd==0.4.5
 python-snap7==0.11
 pendulum==2.1.2
 pymssql-linux==2.1.6
+falcon==2.0.0
+msgpack-python==0.5.6
+waitress==1.4.4

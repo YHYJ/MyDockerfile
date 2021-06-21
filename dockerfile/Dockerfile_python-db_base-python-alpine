@@ -3,7 +3,6 @@
 ARG base_image_name
 ARG base_image_tag
 FROM ${base_image_name}:${base_image_tag}
-MAINTAINER yj1516268@outlook.com
 ENV TZ Asia/Shanghai
 WORKDIR /usr/mabo/
 COPY ./dockerfile/resource/requirements_python-db.txt ./

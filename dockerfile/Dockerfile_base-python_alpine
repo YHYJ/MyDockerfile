@@ -25,5 +25,5 @@ RUN printf "http://mirrors.ustc.edu.cn/alpine/v3.11/main\nhttp://mirrors.ustc.ed
     && pip install --no-cache-dir --upgrade -r ./requirements_base-python.txt \
     && pip install --no-cache-dir --upgrade git+https://github.com/YHYJ/simplecannet \
     # 清理系统
-    && rm -r ./*.sh ./*.txt /root/.cache \
-    && apk del .build-deps
+    # && rm -r ./*.sh ./*.txt /root/.cache \
+    # && apk del .build-deps

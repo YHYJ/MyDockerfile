@@ -37,4 +37,4 @@ xlsxwriter
 xlrd
 firebirdsql
 hjson
-pycryptodome
+pycryptodome==3.9.8

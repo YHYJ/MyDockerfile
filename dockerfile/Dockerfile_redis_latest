@@ -6,7 +6,8 @@ ARG base_image_tag
 FROM ${base_image_name}:${base_image_tag}
 ENV TZ Asia/Shanghai
 CMD redis-server \
-    --appendonly yes \
+    --save "" \
+    --appendonly no \
     --appendfsync everysec \
     --auto-aof-rewrite-percentage 100 \
     --auto-aof-rewrite-min-size 64mb \

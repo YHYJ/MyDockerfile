@@ -1,16 +1,8 @@
 # Version: 0.2
-# 设置maxmemory为800M（针对1G内存）
 
 ARG base_image_name
 ARG base_image_tag
 FROM ${base_image_name}:${base_image_tag}
 ENV TZ Asia/Shanghai
-CMD redis-server \
-    --save "" \
-    --appendonly no \
-    --stop-writes-on-bgsave-error no \
-    --maxmemory 838860800 \
-    --maxmemory-policy volatile-ttl \
-    --maxmemory-samples 5 \
-    --slowlog-log-slower-than 10000 \
-    --databases 16
+COPY ./dockerfile/resource/confile/redis.conf /etc/redis/
+CMD redis-server /etc/redis/redis.conf

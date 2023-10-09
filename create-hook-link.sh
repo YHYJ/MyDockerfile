@@ -15,4 +15,5 @@ Depends:
 -
 !
 
+mkdir .git/hooks
 ln -sf ../../hooks/post-checkout .git/hooks/post-checkout

@@ -38,22 +38,20 @@ function getBranchs() {
   git branch -r | awk -F/ '{print $2}' | awk '{printf "%s ", $0} END {print ""}' | sed 's/ *$//'
 }
 
-function isGitrepo() {
-  # 判断给定的文件夹是不是git仓库
-  if [ -a "$1"/.git ]; then
+function isGitRepo() {
+  # 判断给定的文件夹是不是git仓库根目录
+  if [ "$(pwd)" = "$(git rev-parse --show-toplevel)" ]; then
     return "$normal"
-  else
-    return "$err_file"
   fi
+  return "$err_file"
 }
 
 function haveBranch() {
   # 判断子模块是否有主仓库同名分支
   if [[ "${submodule_branchs[*]}" =~ ${parent_current_branch} ]]; then
     return "$normal"
-  else
-    return "$err_file"
   fi
+  return "$err_file"
 }
 
 function checkoutBranch() {
@@ -67,29 +65,30 @@ function checkoutBranch() {
 ####################################################################
 repo_branchs=$(getBranchs)
 
-# echo -e "\033[1m$parent_name\033[0m: \033[35;40;1m$parent_current_branch\033[0m [\033[36m${repo_branchs[*]}\033[0m]"
-echo -e "\033[1m$parent_name\033[0m: \033[35;40;1m$parent_current_branch\033[0m [\033[36m$repo_branchs\033[0m]"
+echo -e "\x1b[1m$parent_name\x1b[0m: \x1b[35;40;1m$parent_current_branch\x1b[0m [\x1b[36m$repo_branchs\x1b[0m]"
 
 # 遍历仓库文件
 for file in "$parent_path"/*; do
-  # 判断是否是git仓库
-  if isGitrepo "$file"; then
+  if [ -d "$file" ]; then
     cd "$file" || exit "$err_file"
-    # 获取子模块所有分支名
-    submodule_branchs=$(getBranchs)
-    # 判断子模块是否有主仓库同名分支
-    if haveBranch "$PWD"; then
-      # 获取子模块名（TODO：可更新？）
-      sub_name=$(basename "$(realpath "$PWD")")
-      # 获取子模块当前分支名
-      pre_sub_branch=$(git symbolic-ref --short HEAD 2> /dev/null || echo "")
-      # 检查子模块当前分支名是否与父模块当前分支名相同
-      if [[ "$pre_sub_branch" == "$parent_current_branch" ]]; then
-        echo -e "\033[4C\033[1m$sub_name\033[0m: \033[35;40;1m$pre_sub_branch\033[0m [\033[36m$repo_branchs\033[0m]"
-      else
-        checkoutBranch "$file" "$parent_current_branch"
-        post_sub_branch=$(git symbolic-ref --short HEAD)
-        echo -e "\033[4C\033[1m$sub_name\033[0m: \033[34m$pre_sub_branch\033[0m -> \033[35;40;1m$post_sub_branch\033[0m [\033[36m$repo_branchs\033[0m]"
+    # 判断是否是git仓库
+    if isGitRepo "$file"; then
+      # 获取子模块所有分支名
+      submodule_branchs=$(getBranchs)
+      # 判断子模块是否有主仓库同名分支
+      if haveBranch "$PWD"; then
+        # 获取子模块名（TODO：可更新？）
+        sub_name=$(basename "$(realpath "$PWD")")
+        # 获取子模块当前分支名
+        pre_sub_branch=$(git symbolic-ref --short HEAD 2> /dev/null || echo "")
+        # 检查子模块当前分支名是否与父模块当前分支名相同
+        if [[ "$pre_sub_branch" == "$parent_current_branch" ]]; then
+          echo -e "\x1b[4C\x1b[1m$sub_name\x1b[0m: \x1b[35;40;1m$pre_sub_branch\x1b[0m [\x1b[36m$repo_branchs\x1b[0m]"
+        else
+          checkoutBranch "$file" "$parent_current_branch"
+          post_sub_branch=$(git symbolic-ref --short HEAD)
+          echo -e "\x1b[4C\x1b[1m$sub_name\x1b[0m: \x1b[34m$pre_sub_branch\x1b[0m -> \x1b[35;40;1m$post_sub_branch\x1b[0m [\x1b[36m$repo_branchs\x1b[0m]"
+        fi
       fi
     fi
   fi

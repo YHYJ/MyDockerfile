@@ -15,5 +15,11 @@ Depends:
 -
 !
 
-mkdir -p .git/hooks
-ln -sf ../../hooks/post-checkout .git/hooks/post-checkout
+hook_work_dir=".git/hooks"
+mkdir -p "$hook_work_dir"
+
+hook_base_dir="hooks"
+path=$(ls "$hook_base_dir")
+for file in $path; do
+  ln -sf ../../$hook_base_dir/"$file" "$hook_work_dir/$file"
+done

@@ -56,10 +56,10 @@ function haveBranch() {
   return "$err_file"
 }
 
-function checkoutBranch() {
+function switchBranch() {
   # 切换分支
   cd "$1" || exit "$err_file"
-  git checkout --quiet "$2"
+  git switch --quiet "$2"
 }
 
 ####################################################################
@@ -86,11 +86,11 @@ for file in "$parent_path"/*; do
         pre_sub_branch=$(git symbolic-ref --short HEAD 2> /dev/null || echo "")
         # 检查子模块当前分支名是否与父模块当前分支名相同
         if [[ "$pre_sub_branch" == "$parent_current_branch" ]]; then
-          echo -e "\x1b[4C\x1b[1m$sub_name\x1b[0m: \x1b[35;40;1m$pre_sub_branch\x1b[0m [\x1b[36m$repo_branchs\x1b[0m]"
+          echo -e "\x1b[4C\x1b[1m$sub_name\x1b[0m: \x1b[35;40;1m$pre_sub_branch\x1b[0m [\x1b[36m$submodule_branchs\x1b[0m]"
         else
-          checkoutBranch "$file" "$parent_current_branch"
+          switchBranch "$file" "$parent_current_branch"
           post_sub_branch=$(git symbolic-ref --short HEAD)
-          echo -e "\x1b[4C\x1b[1m$sub_name\x1b[0m: \x1b[34m$pre_sub_branch\x1b[0m -> \x1b[35;40;1m$post_sub_branch\x1b[0m [\x1b[36m$repo_branchs\x1b[0m]"
+          echo -e "\x1b[4C\x1b[1m$sub_name\x1b[0m: \x1b[34m$pre_sub_branch\x1b[0m -> \x1b[35;40;1m$post_sub_branch\x1b[0m [\x1b[36m$submodule_branchs\x1b[0m]"
         fi
       fi
     fi

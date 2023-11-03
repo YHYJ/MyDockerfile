@@ -29,6 +29,8 @@ parent_name=$(basename "$(realpath .)")
 parent_path=$(realpath .)
 # 获取父模块当前所在分支
 parent_current_branch=$(git symbolic-ref --short HEAD)
+# 获取所有子模块名
+submodules=$(git submodule status | awk '{print $2}')
 
 ####################################################################
 #+++++++++++++++++++++++++ Define Function ++++++++++++++++++++++++#
@@ -38,9 +40,9 @@ function getBranchs() {
   git branch -r | awk -F/ '{print $2}' | awk '{printf "%s ", $0} END {print ""}' | sed 's/ *$//'
 }
 
-function isGitRepo() {
-  # 判断给定的文件夹是不是git仓库根目录
-  if [ "$(pwd)" = "$(git rev-parse --show-toplevel)" ]; then
+function isSubmodule() {
+  # 判断给定的文件夹是不是子模块
+  if [[ "${submodules[*]}" =~ $(git rev-parse --show-toplevel | xargs basename) ]]; then
     return "$normal"
   fi
   return "$err_file"
@@ -70,15 +72,16 @@ echo -e "\x1b[1m$parent_name\x1b[0m: \x1b[35;40;1m$parent_current_branch\x1b[0m 
 # 遍历仓库文件
 for file in "$parent_path"/*; do
   if [ -d "$file" ]; then
+    # 进到仓库下的文件夹中
     cd "$file" || exit "$err_file"
     # 判断是否是git仓库
-    if isGitRepo "$file"; then
+    if isSubmodule "$file"; then
       # 获取子模块所有分支名
       submodule_branchs=$(getBranchs)
       # 判断子模块是否有主仓库同名分支
       if haveBranch "$PWD"; then
-        # 获取子模块名（TODO：可更新？）
-        sub_name=$(basename "$(realpath "$PWD")")
+        # 获取仓库名
+        sub_name=$(git rev-parse --show-toplevel | xargs basename)
         # 获取子模块当前分支名
         pre_sub_branch=$(git symbolic-ref --short HEAD 2> /dev/null || echo "")
         # 检查子模块当前分支名是否与父模块当前分支名相同

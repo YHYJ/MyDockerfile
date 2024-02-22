@@ -6,7 +6,7 @@ Author: YJ
 Email: yj1516268@outlook.com
 Created Time: 2023-10-08 13:57:32
 
-Description: Git hook，commit后获取commit hash
+Description: Git 钩子，git commit 后获取 hash
 
 Attentions:
 -

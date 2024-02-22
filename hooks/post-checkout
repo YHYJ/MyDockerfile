@@ -6,10 +6,10 @@ Author: YJ
 Email: yj1516268@outlook.com
 Created Time: 2022-10-25 11:00:39
 
-Description: Git hook，git sqitch后将子模块也切换到同名分支
+Description: Git 钩子，git switch 后将子模块也切换到同名分支
 
 Attentions:
-- 为了避免在执行git checkout时运行该钩子，请设置SKIP_GIT_CHECKOUT=1
+- 为了避免在执行 git checkout 时运行该钩子，请设置 SKIP_GIT_CHECKOUT=1
 
 Depends:
 -
